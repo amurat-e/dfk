@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+export MAILFROM="murat.ergin@ege.edu.tr"
+export MAILTO=$1
+export SUBJECT="DFK for "$HOSTNAME
+export BODY="/export/home/oracle/Script/dfk_$HOSTNAME.html"
+export ATTACH="/export/home/oracle/Script/dfk_$HOSTNAME.html"
+export MAILPART=1234567890 ## Generates Unique ID
+export MAILPART_BODY=12345ABCDEF
+
+(
+ echo "From: $MAILFROM"
+ echo "To: $MAILTO"
+ echo "Subject: $SUBJECT"
+ echo "MIME-Version: 1.0"
+ echo "Content-Type: multipart/mixed; boundary=\"$MAILPART\""
+ echo ""
+ echo "--$MAILPART"
+ echo "Content-Type: multipart/alternative; boundary=\"$MAILPART_BODY\""
+ echo ""
+ echo "--$MAILPART_BODY"
+ echo "Content-Type: text/plain; charset=ISO-8859-1"
+ echo "You need to enable HTML option for email"
+ echo "--$MAILPART_BODY"
+ echo "Content-Type: text/html; charset=ISO-8859-1"
+ echo "Content-Disposition: inline"
+ cat $BODY
+ echo "--$MAILPART_BODY--"
+
+ echo "--$MAILPART"
+ echo 'Content-Type: text/html; name="'$(basename $ATTACH)'"'
+ echo "Content-Transfer-Encoding: uuencode"
+ echo 'Content-Disposition: attachment; filename="'$(basename $ATTACH)'"'
+ echo ""
+ uuencode $ATTACH $(basename $ATTACH)
+ echo "--$MAILPART--"
+) | /usr/sbin/sendmail -v -f $MAILFROM -t $MAILTO

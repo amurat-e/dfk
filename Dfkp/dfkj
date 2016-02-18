@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Reports disk Usege for UNIX systems
+# AME (C) 2005,2013
+#
+# Step 1. Run df -k and df -h command
+df -k > $HOME/Script/dfk_$HOSTNAME.txt
+df -h >> $HOME/Script/dfk_$HOSTNAME.txt
+rm $HOME/Script/dfk_$HOSTNAME.html
+# 
+# arg(0) is input text file which will parsed by Dfk 
+# arg(1) is required numbers of columns for output file
+# arg(2) is configuration file that is include ignore lines in input text file 
+# When the program runs, Dfk reads "dfk_hostaname.txt" (arg(0)) file then exclude ignored lines 
+# these defined in dfk.config (arg(2)) file and creates number of columns (arg(1)) tagged html output file
+# 
+java -classpath $HOME/Script Dfk $HOME/Script/dfk_$HOSTNAME.txt 6 $HOME/Script/dfk.conf
+# e-posta gonderimi
+$HOME/Script/sendDfk murat.ergin@ege.edu.tr
+$HOME/Script/sendDfk ali.yavuz@mail.ege.edu.tr
+#
