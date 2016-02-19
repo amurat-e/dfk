@@ -2,17 +2,23 @@
 dfkj
 -------------------------------------------------------------- 
 App Names: dfkj, Dfk, sendDfk
+
 App Types: Bash Script, java, Bash Script
-Last Update: 12/01/2016
+
+Last Update: 18/02/2016
+
 Writen by A. Murat Ergin
 -------------------------------------------------------------- 
 Description: 
 dfkj    : This script firstly runs unix dfk command then runs Dfk app.
+
 Dfk     : parses df command output with dfk.conf parameters and creates html output
+
 sendDfk : sends e-mail to users with attachment of html file which has created by Dfk 
 Requirtments:
 -------------------------------------------------------------
 /usr/bin/bash 
+
 java SE JDK 1.5 or above
 
 Execute (UNIX)
