@@ -19,9 +19,14 @@ Execute (UNIX)
 -------------------------------------------------------------
 
 $ df -k > $HOME/Script/dfk_$HOSTNAME.txt
+
 $ df -h >> $HOME/Script/dfk_$HOSTNAME.txt
+
 $ rm $HOME/Script/dfk_$HOSTNAME.html
+
 $ java -classpath $HOME/Script Dfk $HOME/Script/dfk_$HOSTNAME.txt 6 $HOME/Script/dfk.conf
+
 $ $HOME/Script/sendDfk e-mail_address
+
 
 
