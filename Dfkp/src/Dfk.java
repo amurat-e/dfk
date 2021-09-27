@@ -93,7 +93,7 @@ public class Dfk
     
     //System.out.println(">"+ignoreList.size());
 
-    line2="<!DOCTYPE html><html><body><table>";
+    line2="<body><table>";
 
     bfrdrdr = new BufferedReader(new  FileReader(infile));
     while ((line1 = bfrdrdr.readLine()) != null){
@@ -145,8 +145,8 @@ public class Dfk
 
     }
      line0 = new String(cb);
-     line2 = line2+line0;
-     line2=line2+"</table></body></html>";
+     line2 = line2+line0.replaceAll("\\u0000", "");;
+     line2=line2+"</table></body>";
      bfrwrtr.write(line2+(char)13+"\n"); 
      bfrwrtr.flush();
      bfrwrtr.close();
