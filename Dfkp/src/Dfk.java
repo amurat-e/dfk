@@ -173,7 +173,7 @@ public class Dfk
     
    if (args.length < 1) 
     {
-      System.out.println("Yanlis Kullanim Bagdat tan Doner...");
+      System.out.println("Yanlis Kullanim Bagdat'tan Doner...");
       System.out.println("Soyleki : java Dfk filename columns confile");
       System.exit(-1);
     }    
